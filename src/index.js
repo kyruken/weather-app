@@ -1,11 +1,17 @@
 import header from './header.js';
-import weather from './weather.js';
+import loadData from './weather.js';
 
 function homePage() {
     document.body.appendChild(header());
     let city = 'london';
 
-    weather(city);
+
+    const weatherContainer = document.createElement('div');
+    async function getData() {
+        let weatherData = await loadData(city);
+        console.log(weatherData);
+    }
+    getData();
 }
 
 homePage();
