@@ -9,4 +9,9 @@ async function loadData(cityInput) {
     }
 }
 
-export default loadData;
+async function getData(city) {
+    let weatherData = await loadData(city);
+    console.log(weatherData);
+}
+
+export default getData;

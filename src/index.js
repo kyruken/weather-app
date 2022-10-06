@@ -1,17 +1,24 @@
 import header from './header.js';
-import loadData from './weather.js';
+import getData from './weather.js';
 
 function homePage() {
     document.body.appendChild(header());
-    let city = 'london';
+    readCityInput();
+}
 
+function readCityInput() {
+    const textInput = document.getElementById('textinput');
+    const findButton = document.getElementById('findcity');
 
-    const weatherContainer = document.createElement('div');
-    async function getData() {
-        let weatherData = await loadData(city);
-        console.log(weatherData);
+    let city;
+
+    function setEvents() {
+        findButton.addEventListener('click', () => getData(city));
+        textInput.addEventListener('input', function(){
+            city = textInput.value;
+        })
     }
-    getData();
+    setEvents();
 }
 
 homePage();
